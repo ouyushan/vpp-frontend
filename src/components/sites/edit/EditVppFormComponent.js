@@ -69,17 +69,17 @@ const EditVppFormComponent = observer((props) => {
             return (
                 <div className={'edit-vpp-form'}>
                     <p>
-                        <h3 style={{marginTop: 32}}>Aktionen für virtuelle Kraftwerke</h3>
+                        <h3 style={{marginTop: 32}}>虚拟电厂的操作</h3>
                         <Space size="middle">
                             <Popconfirm
-                                title={"Möchten Sie wirklich das gesamte virtuelle Kraftwerk löschen?"}
+                                title={"是否确实要删除整个虚拟电厂?"}
                                 onConfirm={() => onDeleteVpp(store.vppStore.editState.vppId)}
-                                okText="Ja"
-                                cancelText="Nein"
+                                okText="是"
+                                cancelText="否"
                             >
-                                <Button type="danger" icon={<DeleteOutlined/>}>Löschen</Button>
+                                <Button type="danger" icon={<DeleteOutlined/>}>删除</Button>
                             </Popconfirm>
-                            <Switch checkedChildren="veröffentlicht" unCheckedChildren="nicht veröffentlicht"
+                            <Switch checkedChildren="已发布" unCheckedChildren="未发布"
                                     onChange={onChangePublished} checked={store.vppStore.editState.vpp.published}/>
 
                         </Space>
@@ -91,7 +91,7 @@ const EditVppFormComponent = observer((props) => {
             return <Row>
                 <Col>
                     <Alert style={{marginTop: 16}}
-                           description="Wähle Sie ein virtuelles Kraftwerk aus, um es editieren zu können."/>
+                           description="选择一个虚拟电厂进行编辑."/>
                 </Col>
             </Row>
         } else {

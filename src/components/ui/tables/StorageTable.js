@@ -15,12 +15,12 @@ export const StorageTable = observer((props) => {
 
     const storageColumns = [
         {
-            title: 'Speicheranlagen',
+            title: '储能设备',
             dataIndex: 'storageId',
             key: 'storageId',
         },
         {
-            title: 'Aktionen',
+            title: '操作',
             key: 'actions',
             render: (record) => (
                 <EditDeleteButtonGroup
@@ -42,7 +42,7 @@ export const StorageTable = observer((props) => {
         <Button onClick={(e) => onOpenCreate(dppOrHouseholdId)}
                 type="primary"
                 icon={<PlusOutlined/>}>
-            Speicheranlage hinzufügen
+            添加储能设备
         </Button>
     </div>
 });

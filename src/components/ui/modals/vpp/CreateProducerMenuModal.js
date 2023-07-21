@@ -13,27 +13,27 @@ export const CreateProducerMenuModal = observer((props) => {
         <Modal
             closable={false}
             destroyOnClose={true}
-            title="Erzeugungsanlage hinzufügen"
+            title="添加发电设备"
             visible={visible}
             footer={[
                 <Button key="submit" type="primary" onClick={onOpenWater}>
-                    Wasser
+                    水能
                 </Button>,
                 <Button type="primary" onClick={onOpenWind}>
-                    Wind
+                    风能
                 </Button>,
                 <Button type="primary" onClick={onOpenSolar}>
-                    Solar
+                    光伏
                 </Button>,
                 <Button type="primary" onClick={onOpenOther}>
-                    Sonstige
+                    其它
                 </Button>,
                 <Button key="back" onClick={onCancel}>
-                    Abbrechen
+                    取消
                 </Button>
             ]}
         >
-            <p>Bitte wählen Sie die Art der Anlage aus, die Sie hinzufügen möchten.</p>
+            <p>请选择设备类型.</p>
         </Modal>
     );
 });

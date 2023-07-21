@@ -143,7 +143,7 @@ export const EditVppForm = observer((props) => {
                 }
             );
         } else {
-            enqueueSnackbar("Beim Editieren oder Hinzufügen eines DK ist etwas schief gelaufen.", {variant: "error"});
+            enqueueSnackbar("编辑或添加虚拟电厂时出现问题.", {variant: "error"});
         }
     };
 
@@ -174,7 +174,7 @@ export const EditVppForm = observer((props) => {
                 }
             );
         } else {
-            enqueueSnackbar("Beim Editieren oder Hinzufügen eines Haushaltes ist etwas schief gelaufen.", {variant: "error"});
+            enqueueSnackbar("编辑或添加住户时出现问题.", {variant: "error"});
         }
     };
 
@@ -431,7 +431,7 @@ export const EditVppForm = observer((props) => {
                     }
                 });
             } else {
-                enqueueSnackbar("Beim Speichern des Wasserkraftwerks ist etwas schief gelaufen.", {variant: "error"})
+                enqueueSnackbar("保存水电设备时出错.", {variant: "error"})
             }
         } else if (state.isEditingWater) {
             store.vppStore.updateWater(state.waterEnergyId,
@@ -446,7 +446,7 @@ export const EditVppForm = observer((props) => {
                 }
             });
         } else {
-            enqueueSnackbar("Beim Speichern des Wasserkraftwerks ist etwas schief gelaufen.", {variant: "error"})
+            enqueueSnackbar("保存水电设备时出错.", {variant: "error"})
         }
     };
 
@@ -475,7 +475,7 @@ export const EditVppForm = observer((props) => {
                     }
                 });
             } else {
-                enqueueSnackbar("Beim Speichern der Windkraftanlage ist etwas schief gelaufen.", {variant: "error"})
+                enqueueSnackbar("保存风力设备时出错.", {variant: "error"})
             }
         } else if (state.isEditingWind) {
             store.vppStore.updateWind(state.windEnergyId,
@@ -490,7 +490,7 @@ export const EditVppForm = observer((props) => {
                 }
             });
         } else {
-            enqueueSnackbar("Beim Speichern der Windkraftanlage ist etwas schief gelaufen.", {variant: "error"})
+            enqueueSnackbar("保存风力设备时出错.", {variant: "error"})
         }
 
     };
@@ -520,7 +520,7 @@ export const EditVppForm = observer((props) => {
                     }
                 });
             } else {
-                enqueueSnackbar("Beim Speichern der Solaranlage ist etwas schief gelaufen.", {variant: "error"})
+                enqueueSnackbar("保存光伏电站时出错.", {variant: "error"})
             }
         } else if (state.isEditingSolar) {
             store.vppStore.updateSolar(state.solarEnergyId,
@@ -535,7 +535,7 @@ export const EditVppForm = observer((props) => {
                 }
             });
         } else {
-            enqueueSnackbar("Beim Speichern der Solaranlage ist etwas schief gelaufen.", {variant: "error"})
+            enqueueSnackbar("保存光伏电站时出错.", {variant: "error"})
         }
     };
 
@@ -564,7 +564,7 @@ export const EditVppForm = observer((props) => {
                     }
                 });
             } else {
-                enqueueSnackbar("Beim Speichern der alternativen Erzeugungsanlage ist etwas schief gelaufen.", {variant: "error"})
+                enqueueSnackbar("保存备用发电系统时出错.", {variant: "error"})
             }
         } else if (state.isEditingOther) {
             store.vppStore.updateOther(state.otherEnergyId,
@@ -579,7 +579,7 @@ export const EditVppForm = observer((props) => {
                 }
             });
         } else {
-            enqueueSnackbar("Beim Speichern der alternativen Erzeugungsanlage ist etwas schief gelaufen.", {variant: "error"})
+            enqueueSnackbar("保存备用发电系统时出错.", {variant: "error"})
         }
     };
 
@@ -608,7 +608,7 @@ export const EditVppForm = observer((props) => {
                     }
                 });
             } else {
-                enqueueSnackbar("Beim Speichern der Speicheranlage ist etwas schief gelaufen.", {variant: "error"})
+                enqueueSnackbar("保储能能系统时出错.", {variant: "error"})
             }
         } else if (state.isEditingStorage) {
             store.vppStore.updateStorage(state.storageId,
@@ -623,7 +623,7 @@ export const EditVppForm = observer((props) => {
                 }
             });
         } else {
-            enqueueSnackbar("Beim Speichern der Speicheranlage ist etwas schief gelaufen.", {variant: "error"})
+            enqueueSnackbar("保储能能系统时出错.", {variant: "error"})
         }
     };
 
@@ -658,11 +658,11 @@ export const EditVppForm = observer((props) => {
     };
 
     return <div>
-        <h3 style={{marginTop: 32}}>Dezentrale Kraftwerke</h3>
+        <h3 style={{marginTop: 32}}>分布式电厂</h3>
         <Button onClick={onOpenAddDpp}
                 type="primary"
                 icon={<PlusOutlined/>}>
-            Dez. Kraftwerk hinzufügen
+            添加分布式电厂
         </Button>
         {store.vppStore.dpps.map((dpp) => {
             return (<Collapse style={{marginTop: 8}} collapsible="header">
@@ -692,11 +692,11 @@ export const EditVppForm = observer((props) => {
             </Collapse>)
         })}
 
-        <h3 style={{marginTop: 32}}>Haushalte</h3>
+        <h3 style={{marginTop: 32}}>住户</h3>
         <Button onClick={onOpenAddHousehold}
                 type="primary"
                 icon={<PlusOutlined/>}>
-            Haushalt hinzufügen
+            添加住户
         </Button>
         {store.vppStore.households.map((household) => {
             return (<Collapse style={{marginTop: 8}} collapsible="header">

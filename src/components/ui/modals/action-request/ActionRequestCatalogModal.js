@@ -32,20 +32,20 @@ export const ActionRequestCatalogModal = observer(() => {
             if (vppStore.dashboardState.selectedActionCatalog.problemType === "OVERFLOW") {
                 return <div>
                     <ul>
-                        <li>Einspeisung des durchschnittlichen Überschusses ins öffentliche Netz</li>
-                        <li>Hinzuschalten neuer Speicheranlagen</li>
+                        <li>将平均盈余投入公共网络</li>
+                        <li>添加新的储能设备</li>
                     </ul>
-                    <p style={{fontSize: 10}}>*aktuelle Manipulation wird nicht berücksichtigt</p>
+                    <p style={{fontSize: 10}}>*不考虑当前操纵</p>
                 </div>
 
             } else if (vppStore.dashboardState.selectedActionCatalog.problemType === "SHORTAGE") {
                 return <div>
                     <ul>
-                        <li>Abspeisung der durchschnittlich benötigten Energie aus dem öffentlichen Netz</li>
-                        <li>Hinzuschalten neuer Erzeugungsanlagen</li>
+                        <li>公共电网所需平均能量的转移</li>
+                        <li>增加新一代工厂</li>
                     </ul>
 
-                    <p style={{fontSize: 10}}>*aktuelle Manipulation wird nicht berücksichtigt</p>
+                    <p style={{fontSize: 10}}>*不考虑当前操纵</p>
                 </div>
             }
         }
@@ -75,31 +75,31 @@ export const ActionRequestCatalogModal = observer(() => {
                 onBlur={() => {
                 }}
             >
-                Handlungsempfehlungskatalog
+                行动建议目录
             </div>
         }
         visible={vppStore.dashboardState.isViewingActionCatalog}
         footer={[
             <Button key="back" onClick={onCloseActionCatalog}>
-                Abbrechen
+                取消
             </Button>
         ]}
     >
-        <p>Zeitraum: {timestampToLocalString(vppStore.dashboardState.selectedActionCatalog.startTimestamp)} bis {timestampToLocalString(vppStore.dashboardState.selectedActionCatalog.endTimestamp)}</p>
-        <p>Art des Problems: {getProblemType(vppStore.dashboardState.selectedActionCatalog.problemType)}</p>
-        <p>Durchschnittliche
-            Energielücke: {vppStore.dashboardState.selectedActionCatalog.averageGap} kW</p>
-        <h2>Lösungsvorschläge mittels Erzeugungsanlagen</h2>
+        <p>时期: {timestampToLocalString(vppStore.dashboardState.selectedActionCatalog.startTimestamp)} bis {timestampToLocalString(vppStore.dashboardState.selectedActionCatalog.endTimestamp)}</p>
+        <p>问题类型: {getProblemType(vppStore.dashboardState.selectedActionCatalog.problemType)}</p>
+        <p>平均的
+            能源缺口: {vppStore.dashboardState.selectedActionCatalog.averageGap} kW</p>
+        <h2>发电厂解决方案建议</h2>
         <Table pagination={{pageSize: 4}} size="small"
                dataSource={vppStore.dashboardState.selectedActionCatalog.actions.filter((action) => !action.isStorage).slice()}
                columns={[
                    {
-                       title: 'Name der Erzeugungsanlage',
+                       title: '发电厂名称',
                        dataIndex: 'producerOrStorageId',
                        key: 'producerOrStorageId',
                    },
                    {
-                       title: 'Lösungsvorschlag',
+                       title: '建议的解决方案',
                        dataIndex: 'actionType',
                        key: 'actionType',
                        render: (value) => {
@@ -120,17 +120,17 @@ export const ActionRequestCatalogModal = observer(() => {
                    }
                ]}/>
 
-        <h2>Lösungsvorschläge mittels Speicheranlagen</h2>
+        <h2>通过储能设备提供解决方案的建议</h2>
         <Table pagination={{pageSize: 4}} size="small"
                dataSource={vppStore.dashboardState.selectedActionCatalog.actions.filter((action) => action.isStorage).slice()}
                columns={[
                    {
-                       title: 'Name der Erzeugungsanlage',
+                       title: '发电厂名称',
                        dataIndex: 'producerOrStorageId',
                        key: 'producerOrStorageId',
                    },
                    {
-                       title: 'Lösungsvorschlag',
+                       title: '建议的解决方案',
                        dataIndex: 'actionType',
                        key: 'actionType',
                        render: (value) => {
@@ -142,7 +142,7 @@ export const ActionRequestCatalogModal = observer(() => {
                        }
                    },
                    {
-                       title: 'regelbare Energie',
+                       title: '可调节能量',
                        dataIndex: 'actionValue',
                        key: 'actionValue',
                        render: (value) => {
@@ -150,7 +150,7 @@ export const ActionRequestCatalogModal = observer(() => {
                        }
                    },
                    {
-                       title: 'verfügbare Ladezeit',
+                       title: '可用装载时间',
                        dataIndex: 'hours',
                        key: 'hours',
                        render: (value) => {
@@ -159,9 +159,8 @@ export const ActionRequestCatalogModal = observer(() => {
                    }
                ]}/>
 
-        <h2>Alternative Lösungsvorschläge</h2>
-        <p>Falls die zuvor genannten Lösungsvorschläge nicht ausreichend sind, können Sie folgende Vorschläge
-            durchführen:</p>
+        <h2>替代解决方案</h2>
+        <p>如果上述解决方案不够，您可以实施:</p>
         {ActionAlternatives()}
     </Modal>);
 });

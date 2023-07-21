@@ -47,16 +47,14 @@ const CreateComponent = observer((props) => {
                 }
             })
         } else {
-            enqueueSnackbar("Der Name des VK muss min. 4 Zeichen enthalten.", {variant: "error"})
+            enqueueSnackbar("虚拟电厂名称必须至少包含4个字符.", {variant: "error"})
         }
     };
 
     return (
         <div className={'create-vpp'}>
-            <h2>Virtuelles Kraftwerk erstellen</h2>
-            <p>Bitte wählen Sie einen Namen für das neue virtuelle Kraftwerk aus und bestätige den Button um den Prozess
-                zu
-                starten.</p>
+            <h2>创建虚拟电厂</h2>
+            <p>请为新的虚拟电厂选择一个名称，并确认流程周围的开始按钮.</p>
             <Row>
                 <Col span={12}>
                     <Form
@@ -65,18 +63,18 @@ const CreateComponent = observer((props) => {
                         onFinish={onFinish}
                     >
                         <Form.Item
-                            label="Name des virtuellen Kraftwerks"
+                            label="虚拟电厂名称"
                             name="virtualPowerPlantId"
                             rules={[{
                                 required: true,
-                                message: 'Dieses Feld muss ausgefüllt sein.'
+                                message: '此字段必须填写。'
                             }]}
                         >
                             <Input style={{width: 250}}/>
                         </Form.Item>
                         <Form.Item>
                             <Button type="primary" htmlType="submit">
-                                Prozess starten
+                                启动流程
                             </Button>
                         </Form.Item>
                     </Form>

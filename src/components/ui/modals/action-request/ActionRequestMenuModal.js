@@ -43,7 +43,7 @@ export const ActionRequestMenuModal = observer(() => {
     return (
         <Modal
             closable={false}
-            title="Maßnahmenabfrage"
+            title="措施调查"
             visible={vppStore.dashboardState.isLoadingOrAddingRequest}
             footer={[
                 <Button key="submit" type="primary" onClick={onRequest}>
@@ -53,15 +53,13 @@ export const ActionRequestMenuModal = observer(() => {
                     Abfrage laden
                 </Button>,
                 <Button key="back" onClick={cancelRequest}>
-                    Abbrechen
+                    取消
                 </Button>
             ]}
         >
-            <p>Bei der Erstellung einer neuen Maßnahmenabfrage wird eine 24-stündige Last- und Erzeugungsprognose
-                für das ausgewählte virtuelle Kraftwerk erzeugt. Dazu werden Differenzen zwischen der Last und Erzeugung
-                erkannt und
-                Handlungsempfehlungen in Form eines Katalogs abgegeben.</p>
-            <p>Möchten Sie eine neue Anfrage erstellen oder eine vorherige laden?</p>
+            <p>当制定新的测量调查时，将生成24小时负荷和发电量预测。
+                为所选择的虚拟电厂生成。为此，负荷和发电之间的差异认可和目录形式的行动建议.</p>
+            <p>您想创建新请求还是加载以前的请求？</p>
         </Modal>
     )
 });

@@ -27,7 +27,7 @@ export const LoadProductionChart = () => {
     return (
         <Row style={{marginTop: 32}}>
             <Col span={16}>
-                <h3>Last- und Erzeugungsübersicht</h3>
+                <h3>Last-生产概述</h3>
                 <Line data={{
                     labels: dashboardState.loadsLabels.slice(),
                     datasets: [{
@@ -38,14 +38,14 @@ export const LoadProductionChart = () => {
                         tension: 0.1,
                         order: 1
                     }, {
-                        label: dashboardState.selectedVppId + " Erzeugung [kW]",
+                        label: dashboardState.selectedVppId + " 生产 [kW]",
                         data: dashboardState.productionsDataset.slice(),
                         fill: false,
                         borderColor: 'rgb(201, 161, 218)',
                         tension: 0.1,
                         order: 2
                     }, {
-                        label: "Energieüberschuss Schwelle [kW]",
+                        label: "能量过剩阈值 [kW]",
                         data: dashboardState.loadsDataset
                             .map((x) => x + dashboardState.selectedActionRequest.overflowThreshold)
                             .slice(),
@@ -54,7 +54,7 @@ export const LoadProductionChart = () => {
                         tension: 0.1,
                         order: 3
                     }, {
-                        label: "Energieengpass Schwelle [kW]",
+                        label: "能源瓶颈阈值 [kW]",
                         data: dashboardState.productionsDataset
                             .map((x) => x + dashboardState.selectedActionRequest.shortageThreshold)
                             .slice(),

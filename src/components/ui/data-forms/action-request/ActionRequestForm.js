@@ -130,25 +130,23 @@ export const ActionRequestForm = observer(() => {
     return (<Modal
         destroyOnClose={true}
         closable={false}
-        title="Maßnahmenabfrage erstellen"
+        title="创建行动调查"
         visible={vppStore.dashboardState.isLoadingOrAddingRequest && vppStore.dashboardState.isAddingRequest}
         footer={[
             <Button key="back" onClick={onCancelCreateActionRequest}>
-                Abbrechen
+                取消
             </Button>
         ]}
         width={1000}
     >
         <p>
-            Wenn Sie bereits Handlungsempfehlungen bekommen haben, können Sie diese durch sogenannte Manipulationen
-            realisieren.<br/>
-            Bei Manipulationen werden die aktuellen Kapazitäten der Anlagen manipuliert, die bei der Erzeugungsprognose
-            dieser Maßnahmenabfrage berücksichtigt werden.
+            如果你已经收到了行动建议，你可以使用所谓的操作理解.<br/>
+            操纵电厂的当前能力，这些能力是考虑到这次措施调查.
         </p>
         <Row style={{marginTop: 16, marginBottom: 16}}>
             <Col>
                 <Alert
-                    message={"Die Zeitstempel werden im System bei der Maßnahmenabfrage auf eine Viertelstunde abgerundet. Deshalb kann es sein, dass sich die Zeitstempel nach dem Absenden überschneiden."}/>
+                    message={"在行动查询期间，时间戳在系统中四舍五入到一刻钟。因此，发送后时间戳可能重叠."}/>
             </Col>
         </Row>
         <Form
@@ -158,9 +156,9 @@ export const ActionRequestForm = observer(() => {
             layout="vertical"
         >
             <Form.Item
-                label="Name der Maßnahmenabfrage"
+                label="行动调查的名称"
                 name="actionRequestId"
-                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                rules={[{required: true, message: '此字段必须填写。'}]}
             >
                 <Input style={{width: 250}}/>
             </Form.Item>
@@ -169,35 +167,35 @@ export const ActionRequestForm = observer(() => {
                 <Col>
                     <Form.Item
                         style={{marginRight: 16}}
-                        label="Energieengpass Schwelle (kW)"
+                        label="能源瓶颈阈值(kW)"
                         name="shortageThreshold"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Energieüberschuss Schwelle (kW)"
+                        label="能量过剩阈值 (kW)"
                         name="overflowThreshold"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
                 </Col>
             </Row>
 
-            <h2>Manipulationen durch Erzeugungsanlagen</h2>
+            <h2>发电厂操作</h2>
             <Table pagination={{pageSize: 4}} size="small"
                    dataSource={vppStore.dashboardState.addingActionRequest.producerManipulations.slice()}
                    columns={[
                        {
-                           title: 'Name der Erzeugungsanlage',
+                           title: '发电厂名称',
                            dataIndex: 'producerId',
                            key: 'producerId',
                        },
                        {
-                           title: 'Startzeitpunkt',
+                           title: '开始时间',
                            dataIndex: 'startTimestamp',
                            key: 'startTimestamp',
                            render: (value) => {
@@ -215,7 +213,7 @@ export const ActionRequestForm = observer(() => {
                            defaultSortOrder: 'descend'
                        },
                        {
-                           title: 'Endzeitpunkt',
+                           title: '结束时间',
                            dataIndex: 'endTimestamp',
                            key: 'endTimestamp',
                            render: (value) => {
@@ -225,7 +223,7 @@ export const ActionRequestForm = observer(() => {
                            }
                        },
                        {
-                           title: 'Manipulationstyp',
+                           title: '操作类型',
                            dataIndex: 'type',
                            key: 'type',
                            render: (value) => {
@@ -237,11 +235,11 @@ export const ActionRequestForm = observer(() => {
                            }
                        },
                        {
-                           title: 'neue Kapazität',
+                           title: '新增产能',
                            dataIndex: 'capacity',
                            key: 'capacity'
                        }, {
-                           title: 'Aktionen',
+                           title: '操作',
                            key: 'actions',
                            render: (record) => {
                                return <EditDeleteButtonGroup
@@ -254,20 +252,20 @@ export const ActionRequestForm = observer(() => {
                    ]}/>
             <Button style={{marginTop: 8}} key="addProducerManipulation"
                     onClick={onOpenAddProducerManipulation}>
-                Erzeugungsmanipulation hinzufügen
+                添加生成操作
             </Button>
 
-            <h2 style={{marginTop: 16}}>Manipulation durch Speicheranlagen</h2>
+            <h2 style={{marginTop: 16}}>储能设备操作</h2>
             <Table pagination={{pageSize: 4}} size="small"
                    dataSource={vppStore.dashboardState.addingActionRequest.storageManipulations.slice()}
                    columns={[
                        {
-                           title: 'Name der Speicheranlage',
+                           title: '储能设备的名称',
                            dataIndex: 'storageId',
                            key: 'storageId',
                        },
                        {
-                           title: 'Startzeitpunkt',
+                           title: '开始时间',
                            dataIndex: 'startTimestamp',
                            key: 'startTimestamp',
                            render: (value) => {
@@ -285,7 +283,7 @@ export const ActionRequestForm = observer(() => {
                            defaultSortOrder: 'descend'
                        },
                        {
-                           title: 'Endzeitpunkt',
+                           title: '结束时间',
                            dataIndex: 'endTimestamp',
                            key: 'endTimestamp',
                            render: (value) => {
@@ -295,7 +293,7 @@ export const ActionRequestForm = observer(() => {
                            }
                        },
                        {
-                           title: 'Manipulationstyp',
+                           title: '操纵类型',
                            dataIndex: 'type',
                            key: 'type',
                            render: (value) => {
@@ -306,7 +304,7 @@ export const ActionRequestForm = observer(() => {
                                }
                            }
                        }, {
-                           title: 'Aktionen',
+                           title: '操作',
                            key: 'actions',
                            render: (record) => {
                                return <EditDeleteButtonGroup
@@ -319,15 +317,15 @@ export const ActionRequestForm = observer(() => {
                    ]}/>
             <Button style={{marginTop: 8}} key="addStorageManipulation"
                     onClick={onOpenAddStorageManipulation}>
-                Speichermanipulation hinzufügen
+                添加储能操作
             </Button>
 
-            <h2 style={{marginTop: 16}}>Manipulation durch Stromnetz</h2>
+            <h2 style={{marginTop: 16}}>网格操作</h2>
             <Table pagination={{pageSize: 4}} size="small"
                    dataSource={vppStore.dashboardState.addingActionRequest.gridManipulations.slice()}
                    columns={[
                        {
-                           title: 'Startzeitpunkt',
+                           title: '开始时间',
                            dataIndex: 'startTimestamp',
                            key: 'startTimestamp',
                            render: (value) => {
@@ -345,7 +343,7 @@ export const ActionRequestForm = observer(() => {
                            defaultSortOrder: 'descend'
                        },
                        {
-                           title: 'Endzeitpunkt',
+                           title: '结束时间',
                            dataIndex: 'endTimestamp',
                            key: 'endTimestamp',
                            render: (value) => {
@@ -355,7 +353,7 @@ export const ActionRequestForm = observer(() => {
                            }
                        },
                        {
-                           title: 'Manipulationstyp',
+                           title: '操作类型',
                            dataIndex: 'type',
                            key: 'type',
                            render: (value) => {
@@ -367,14 +365,14 @@ export const ActionRequestForm = observer(() => {
                            }
                        },
                        {
-                           title: 'Nennleistung',
+                           title: '额定功率',
                            dataIndex: 'ratedPower',
                            key: 'ratedPower',
                            render: (value) => {
                                return value + " kW"
                            }
                        }, {
-                           title: 'Aktionen',
+                           title: '操作',
                            key: 'actions',
                            render: (record) => {
                                return <EditDeleteButtonGroup
@@ -386,13 +384,13 @@ export const ActionRequestForm = observer(() => {
                        },
                    ]}/>
             <Button style={{marginTop: 8}} key="addGridManipulation" onClick={onOpenAddGridManipulation}>
-                Stromnetzmanipulation hinzufügen
+                添加网格操纵
             </Button>
 
 
             <Form.Item style={{marginTop: 32}}>
                 <Button type="primary" htmlType="submit">
-                    Maßnahmenabfrage erstellen
+                    创建行动调查
                 </Button>
             </Form.Item>
         </Form>

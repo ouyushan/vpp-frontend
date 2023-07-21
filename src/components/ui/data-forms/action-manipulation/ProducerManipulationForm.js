@@ -116,12 +116,12 @@ export const ProducerManipulationForm = observer((props) => {
         let exists = false;
 
         if (record.startTimestamp > record.endTimestamp) {
-            enqueueSnackbar("Der Startzeitstempel kann nicht größer als der Endzeitstempel sein.", {variant: "error"});
+            enqueueSnackbar("开始时间戳不能大于结束时间戳.", {variant: "error"});
         } else {
             vppStore.dashboardState.addingActionRequest.producerManipulations.forEach((manipulation) => {
                 if (dateRangeOverlaps(manipulation.startTimestamp, manipulation.endTimestamp, record.startTimestamp, record.endTimestamp) &&
                     manipulation.producerId === record.producerId) {
-                    enqueueSnackbar("Die Zeitstempel dürfen sich bei existierenden Manipulationen nicht überschneiden.", {variant: "error"});
+                    enqueueSnackbar("时间戳不得与现有操作重叠.", {variant: "error"});
                     exists = true;
                 }
             });
@@ -130,7 +130,7 @@ export const ProducerManipulationForm = observer((props) => {
                 vppStore.dashboardState.addingActionRequest.producerManipulations.push(
                     record
                 );
-                enqueueSnackbar("Die Manipulation wurde erfolgreich eingefügt.", {variant: "success"});
+                enqueueSnackbar("操作已成功插入.", {variant: "success"});
                 onCancelProducerManipulation()
             }
         }
@@ -163,12 +163,12 @@ export const ProducerManipulationForm = observer((props) => {
                 vppStore.dashboardState.addingProducerManipulation.capacity = record.capacity;
                 checkAndRemoveDuplicateProducerManipulation(vppStore.dashboardState.addingProducerManipulation);
                 vppStore.dashboardState.addingActionRequest.producerManipulations.push(vppStore.dashboardState.addingProducerManipulation);
-                enqueueSnackbar("Die Manipulation wurde erfolgreich bearbeitet.", {variant: "success"});
+                enqueueSnackbar("操作已成功处理.", {variant: "success"});
                 onCancelProducerManipulation()
             }
 
         } else {
-            enqueueSnackbar("Bitte wählen Sie eine Anlage aus der Tabelle.", {variant: "error"})
+            enqueueSnackbar("请从表中选择一个附件.", {variant: "error"})
         }
     };
 
@@ -181,12 +181,12 @@ export const ProducerManipulationForm = observer((props) => {
     return (<Modal
         destroyOnClose={true}
         closable={false}
-        title="Erzeugungsmanipulation hinzufügen"
+        title="添加生成操作"
         visible={vppStore.dashboardState.isAddingProducerManipulation ||
         vppStore.dashboardState.isEditingProducerManipulation}
         footer={[
             <Button key="back" onClick={onCancelProducerManipulation}>
-                Abbrechen
+                取消
             </Button>
         ]}
         width={1000}
@@ -220,7 +220,7 @@ export const ProducerManipulationForm = observer((props) => {
                     <Form.Item
                         label="Startzeitstempel"
                         name="startTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                         style={{marginRight: 16}}
                     >
 
@@ -237,9 +237,9 @@ export const ProducerManipulationForm = observer((props) => {
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Endzeitstempel"
+                        label="结束时间"
                         name="endTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
 
                         <DatePicker
@@ -258,15 +258,15 @@ export const ProducerManipulationForm = observer((props) => {
             <Row>
                 <Col>
                     <Form.Item
-                        label="Art der Manipulation"
+                        label="操作类型"
                         name="type"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                         style={{marginRight: 16}}
                     >
                         <Select
                             style={{width: 250}}
                             showSearch
-                            placeholder="Manipulationstyp"
+                            placeholder="操作类型"
                             optionFilterProp="children"
                         >
                             <Option value="PRODUCER_UP">Hochfahren</Option>
@@ -276,22 +276,22 @@ export const ProducerManipulationForm = observer((props) => {
                 </Col>
                 <Col>
                     <Tooltip placement={"right"}
-                             title={"Gibt an, um wie viele Prozentpunkte die Anlage hochgefahren/runtergefahren werden soll." +
-                             " Wenn die aktuelle Kapazität bei 100% liegt und Sie diese um 20% runterfahren möchten, resultiert daraus eine simulierte Kapazität von 80%."}>
+                             title={"指定系统应启动/关闭的百分比." +
+                             " 如果当前容量为100%，并且您希望将其减少20%，则模拟容量为80%."}>
                         <Form.Item
-                            label="Änderung der Kapazität"
+                            label="容量变化"
                             name="capacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber
                                 style={{width: 250}}
-                                placeholder="Manipulation der Kapazität"/>
+                                placeholder="容量操作"/>
                         </Form.Item>
                     </Tooltip>
                 </Col>
             </Row>
 
-            <h2>Verfügbare Anlagen</h2>
+            <h2>可用的安装</h2>
             <Table
                 disabled={vppStore.dashboardState.isEditingProducerManipulation}
                 rowSelection={{
@@ -310,17 +310,17 @@ export const ProducerManipulationForm = observer((props) => {
                 }}
                 columns={
                     [{
-                        title: 'Erzeugungsanlage',
+                        title: '发电厂',
                         dataIndex: 'producerId',
                         key: 'producerId',
                     },
                         {
-                            title: 'Typ',
+                            title: '类型',
                             dataIndex: 'type',
                             key: 'type',
                         },
                         {
-                            title: 'Kapazität lt. Stammdatum',
+                            title: '容量',
                             dataIndex: 'capacity',
                             key: 'capacity',
                         },

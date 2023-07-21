@@ -26,11 +26,11 @@ export const GridManipulationForm = observer(() => {
         let exists = false;
 
         if (record.startTimestamp > record.endTimestamp) {
-            enqueueSnackbar("Der Startzeitstempel kann nicht größer als der Endzeitstempel sein.", {variant: "error"});
+            enqueueSnackbar("开始时间戳不能大于结束时间戳.", {variant: "error"});
         } else {
             vppStore.dashboardState.addingActionRequest.gridManipulations.forEach((manipulation) => {
                 if (dateRangeOverlaps(manipulation.startTimestamp, manipulation.endTimestamp, record.startTimestamp, record.endTimestamp)) {
-                    enqueueSnackbar("Die Zeitstempel dürfen sich bei existierenden Manipulationen nicht überschneiden.", {variant: "error"});
+                    enqueueSnackbar("时间戳不得与现有操作重叠.", {variant: "error"});
                     exists = true;
                 }
             });
@@ -39,7 +39,7 @@ export const GridManipulationForm = observer(() => {
                 vppStore.dashboardState.addingActionRequest.gridManipulations.push(
                     record
                 );
-                enqueueSnackbar("Die Manipulation wurde erfolgreich eingefügt.", {variant: "success"});
+                enqueueSnackbar("操作已成功插入.", {variant: "success"});
                 onCancelGridManipulation()
             }
         }
@@ -69,7 +69,7 @@ export const GridManipulationForm = observer(() => {
             vppStore.dashboardState.addingGridManipulation.ratedPower = record.ratedPower;
             checkAndRemoveDuplicateGridManipulation(vppStore.dashboardState.addingGridManipulation);
             vppStore.dashboardState.addingActionRequest.gridManipulations.push(vppStore.dashboardState.addingGridManipulation);
-            enqueueSnackbar("Die Manipulation wurde erfolgreich bearbeitet.", {variant: "success"});
+            enqueueSnackbar("操作已成功处理.", {variant: "success"});
             onCancelGridManipulation();
         }
 
@@ -84,11 +84,11 @@ export const GridManipulationForm = observer(() => {
     return (<Modal
         destroyOnClose={true}
         closable={false}
-        title="Stromnetzmanipulation hinzufügen"
+        title="添加网格操纵"
         visible={vppStore.dashboardState.isAddingGridManipulation || vppStore.dashboardState.isEditingGridManipulation}
         footer={[
             <Button key="back" onClick={onCancelGridManipulation}>
-                Abbrechen
+                取消
             </Button>
         ]}
         width={1000}
@@ -121,9 +121,9 @@ export const GridManipulationForm = observer(() => {
             <Row>
                 <Col>
                     <Form.Item
-                        label="Startzeitstempel"
+                        label="开始时间戳"
                         name="startTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                         style={{marginRight: 16}}
                     >
                         <DatePicker
@@ -137,9 +137,9 @@ export const GridManipulationForm = observer(() => {
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Endzeitstempel"
+                        label="结束时间"
                         name="endTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <DatePicker
                             style={{width: 250}}
@@ -154,15 +154,15 @@ export const GridManipulationForm = observer(() => {
             <Row>
                 <Col>
                     <Form.Item
-                        label="Art der Manipulation"
+                        label="操作类型"
                         name="type"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                         style={{marginRight: 16}}
                     >
                         <Select
                             style={{width: 250}}
                             showSearch
-                            placeholder="Manipulationstyp"
+                            placeholder="操作类型"
                             optionFilterProp="children"
                         >
                             <Option value="GRID_LOAD">Einspeisen</Option>
@@ -172,13 +172,13 @@ export const GridManipulationForm = observer(() => {
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Leistung (kW)"
+                        label="额定功率 (kW)"
                         name="ratedPower"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber
                             style={{width: 250}}
-                            placeholder="Leistung"/>
+                            placeholder="额定功率"/>
                     </Form.Item>
                 </Col>
             </Row>
@@ -186,7 +186,7 @@ export const GridManipulationForm = observer(() => {
 
             <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    Manipulation hinzufügen
+                    添加操作
                 </Button>
             </Form.Item>
         </Form>

@@ -16,13 +16,13 @@ export const StorageForm = observer((props) => {
         destroyOnClose={true}
         footer={[
             <Button key="back" onClick={onCancel}>
-                Abbrechen
+                取消
             </Button>,
         ]}
-        title={"Speicheranlage " + (editing ? "aktualisieren" : "hinzufügen")}
+        title={"储能设备 " + (editing ? "更新" : "添加")}
         visible={visible}
     >
-        <p>Bitte pflegen Sie die Daten für die Speicheranlage ein</p>
+        <p>请输入储能设备的数据</p>
         <Form
             name="createStorage"
             initialValues={(editing ? storage : {remember: false})}
@@ -33,18 +33,18 @@ export const StorageForm = observer((props) => {
                 <Col>
                     <Form.Item
                         style={{marginRight: 16}}
-                        label="Name der Speicheranlage"
+                        label="设备名称"
                         name="storageId"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <Input style={{width: 250}}/>
                     </Form.Item>
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Nennleistung (kWp)"
+                        label="额定功率 (kWp)"
                         name="ratedPower"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
@@ -54,13 +54,13 @@ export const StorageForm = observer((props) => {
                 <Col>
                     <Col>
                         <Tooltip placement="left"
-                                 title={"Die C-Rate ist ein Wert, der die Ladezeit einer Speicheranlage beschreibt. " +
-                                 "Eine Stunde entspricht dem Wert 1.0, wobei zwei Stunden dem Wert 0.5 entspricht."}>
+                                 title={"C速率是一个描述储能设备充电时间的值. " +
+                                 "一小时等于1.0，两小时等于0.5."}>
                             <Form.Item
                                 style={{marginRight: 16}}
                                 label="C-Rate"
                                 name="loadTimeHour"
-                                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                                rules={[{required: true, message: '此字段必须填写。'}]}
                             >
                                 <InputNumber style={{width: 250}}/>
                             </Form.Item>
@@ -69,11 +69,11 @@ export const StorageForm = observer((props) => {
                 </Col>
                 <Col>
                     <Tooltip placement="right"
-                             title={"Gibt den aktuellen Zustand des Speichers an. Bei 0% ist die Speicheranlage leer und bei 100% ist die Speicheranlage  voll."}>
+                             title={"指示内存的当前状态。在0%时，内存系统为空，在100%时，内存体系为满."}>
                         <Form.Item
-                            label="Kapazität (%)"
+                            label="容量 (%)"
                             name="capacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <Slider style={{width: 250}}/>
                         </Form.Item>
@@ -83,7 +83,7 @@ export const StorageForm = observer((props) => {
 
             <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    {editing ? "Aktualisieren" : "Hinzufügen"}
+                    {editing ? "更新" : "添加"}
                 </Button>
             </Form.Item>
         </Form>

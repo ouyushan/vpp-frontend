@@ -16,10 +16,10 @@ export const EditDeleteButtonGroup = observer((props) => {
                 <Button onClick={() => onEdit(id, type)} type="primary"
                         icon={<EditOutlined/>}/>
                 <Popconfirm
-                    title="Möchten Sie die Anlage wirklich löschen?"
+                    title="是否确实要删除附件？?"
                     onConfirm={() => (type !== null) ? onDelete(id, type) : onDelete(id)}
-                    okText="Ja"
-                    cancelText="Nein"
+                    okText="是"
+                    cancelText="否"
                 >
                     <Button type="danger" icon={<DeleteOutlined/>}/>
                 </Popconfirm>

@@ -27,7 +27,7 @@ export const ActionCatalogTable = observer(() => {
                        dataSource={vppStore.dashboardState.selectedActionRequest.catalogs.slice()}
                        columns={[
                            {
-                               title: 'Start',
+                               title: '开始',
                                dataIndex: 'startTimestamp',
                                key: 'startTimestamp',
                                render: (record) => {
@@ -42,7 +42,7 @@ export const ActionCatalogTable = observer(() => {
                                    bDate.setSeconds(b.startTimestamp, 0);
                                    return bDate - aDate;
                                },
-                               defaultSortOrder: 'descend'
+                               defaultSortOrder: '倒序'
                            },
                            {
                                title: 'Ende',
@@ -55,7 +55,7 @@ export const ActionCatalogTable = observer(() => {
                                }
                            },
                            {
-                               title: 'Problem',
+                               title: '问题',
                                dataIndex: 'problemType',
                                key: 'problemType',
                                render: (type) => {
@@ -69,7 +69,7 @@ export const ActionCatalogTable = observer(() => {
                                }
                            },
                            {
-                               title: 'Aktionen',
+                               title: '操作',
                                key: 'action',
                                render: (text, record) => (
                                    <Button
@@ -86,7 +86,7 @@ export const ActionCatalogTable = observer(() => {
             <Col>
                 <h3>Handlungsempfehlungekataloge</h3>
                 <Alert
-                    description="Für diese Maßnahmenabfrage existieren keine Handlungsempfehlungekataloge."
+                    description="本次调查没有建议行动的目录."
                     type="info"
                 />
             </Col>

@@ -12,15 +12,15 @@ export const ActionRequestCallModal = observer(() => {
 
     const columns = [
         {
-            title: 'Name der Maßnahmenabfrage',
+            title: '行动调查的名称',
             dataIndex: 'actionRequestId',
         },
         {
-            title: 'Name des virtuellen Kraftwerks',
+            title: '虚拟电厂名称',
             dataIndex: 'virtualPowerPlantId',
         },
         {
-            title: 'Zeitstempel',
+            title: '时间戳',
             dataIndex: 'timestamp',
             render: (record) => {
                 Date.prototype.addHours = function (h) {
@@ -42,7 +42,7 @@ export const ActionRequestCallModal = observer(() => {
             defaultSortOrder: 'ascend',
             sortOrder: 'ascend'
         }, {
-            title: 'Aktueller Status',
+            title: '当前状态',
             dataIndex: 'status',
         },
     ];
@@ -137,14 +137,14 @@ export const ActionRequestCallModal = observer(() => {
     return (<Modal
         destroyOnClose={true}
         closable={false}
-        title="Maßnahmenabfrage aufrufen"
+        title="调用操作查询"
         visible={vppStore.dashboardState.isLoadingOrAddingRequest && vppStore.dashboardState.isLoadingRequest}
         footer={[
             <Button key="submit" type="primary" onClick={acceptLoadRequest}>
                 Abrufen
             </Button>,
             <Button key="back" onClick={cancelLoadRequest}>
-                Abbrechen
+                取消
             </Button>
         ]}
         width={1000}

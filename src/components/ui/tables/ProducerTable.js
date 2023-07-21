@@ -14,17 +14,17 @@ export const ProducerTable = observer((props) => {
 
     const producerColumns = [
             {
-                title: 'Erzeugungsanlagen',
+                title: '发电设备',
                 dataIndex: 'producerId',
                 key: 'producerId',
             },
             {
-                title: 'Typ',
+                title: '类型',
                 dataIndex: 'type',
                 key: 'type',
             },
             {
-                title: 'Aktionen',
+                title: '操作',
                 key: 'actions',
                 render: (record) => (
                     <EditDeleteButtonGroup
@@ -48,7 +48,7 @@ export const ProducerTable = observer((props) => {
         <Button onClick={() => onOpenCreate(dppOrHouseholdId)}
                 type="primary"
                 icon={<PlusOutlined/>}>
-            Erzeugungsanlage hinzufügen
+            添加发电设备
         </Button>
     </div>
 });

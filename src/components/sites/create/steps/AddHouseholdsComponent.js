@@ -19,12 +19,12 @@ const AddHouseholdsComponent = observer((props) => {
 
     const columns = [
         {
-            title: 'Haushalte',
+            title: '住户',
             dataIndex: 'householdId',
             key: 'householdId',
         },
         {
-            title: 'Anzahl Haushaltsmitglieder',
+            title: '住户成员人数',
             dataIndex: 'householdMemberAmount',
             key: 'householdMemberAmount',
         },
@@ -79,7 +79,7 @@ const AddHouseholdsComponent = observer((props) => {
 
     const onEnd = () => {
         store.vppStore.resetCreatingState();
-        enqueueSnackbar("Der Prozess wurde erfolgreich beendet.", {variant: "success"});
+        enqueueSnackbar("流程已成功完成.", {variant: "success"});
         history.push('/bearbeiten');
     };
 
@@ -97,17 +97,16 @@ const AddHouseholdsComponent = observer((props) => {
         <div className={'create-vpp'}>
             <CreateStepComponent currentStep={2}/>
 
-            <h2 style={{marginTop: 32}}>Schritt 2: Hinzufügen der Haushalte</h2>
+            <h2 style={{marginTop: 32}}>步骤2：添加住户</h2>
 
-            <p>Ein virtuelles Kraftwerk beinhaltet beliebig viele Haushalte. In diesem Schritt werden diese dem
-                virtuellen Kraftwerk hinzugefügt.</p>
+            <p>虚拟电厂包含任意数量的住户。在该步骤中创建住户.</p>
 
             <Table dataSource={store.vppStore.households} columns={columns}/>
 
             <Row style={{marginTop: 16}}>
                 <Col>
                     <Button onClick={onOpenAddHouseholdModal} type="primary" icon={<PlusOutlined/>}>
-                        Haushalt hinzufügen
+                        添加住户
                     </Button>
                 </Col>
             </Row>
@@ -115,26 +114,26 @@ const AddHouseholdsComponent = observer((props) => {
             <Row style={{marginTop: 16}} justify="end">
                 <Col>
                     <Popconfirm
-                        title="Möchten Sie diesen Prozess wirklich beenden?"
+                        title="你真的想结束这个过程吗？?"
                         onConfirm={onEnd}
                         onCancel={() => {
                         }}
-                        okText="Ja"
-                        cancelText="Nein"
+                        okText="是"
+                        cancelText="否"
                     >
                         <Button style={{marginRight: 8}}>
-                            Prozess beenden
+                            结束流程
                         </Button>
                     </Popconfirm>
                 </Col>
                 <Col>
                     <Button style={{marginRight: 8}} onClick={onBack} type="primary">
-                        Zurück zu Schritt 2
+                        返回步骤2
                     </Button>
                 </Col>
                 <Col>
                     <Button onClick={onForward} type="primary">
-                        Weiter zu Schritt 3
+                        继续执行步骤3
                     </Button>
                 </Col>
             </Row>

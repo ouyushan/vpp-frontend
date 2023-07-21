@@ -41,24 +41,24 @@ export const App = observer(() => {
                 <Sider collapsible collapsed={collapsed} onCollapse={setCollapse} style={{backgroundColor: '#00406B'}}>
                     {!collapsed &&
                     <img style={{padding: '16px', display: 'block', marginLeft: 'auto', marginRight: 'auto'}}
-                         src={'logo.png'} alt={"Logo Universität Oldenburg"}/>
+                         src={'/logo.png'} alt={"Logo university Oldenburg"}/>
                     }
                     <Menu theme={"dark"} defaultSelectedKeys={[window.location.pathname]} mode="inline">
                         <Menu.Item key="/" icon={<DesktopOutlined/>}>
-                            <Link to={'/'}>Dashboard</Link>
+                            <Link to={'/'}>仪表盘</Link>
                         </Menu.Item>
                         <Menu.Item key="/erstellen" icon={<AppstoreAddOutlined/>}>
-                            <Link to={'/erstellen'}>VK erstellen</Link>
+                            <Link to={'/erstellen'}>创建虚拟电厂</Link>
                         </Menu.Item>
                         <Menu.Item key="/bearbeiten" icon={<EditOutlined/>}>
-                            <Link to={'/bearbeiten'}>VK bearbeiten</Link>
+                            <Link to={'/bearbeiten'}>编辑虚拟电厂</Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background"
                             style={{paddingLeft: '32px', backgroundColor: '#398ECE'}}>
-                        <h1 className={'white'}>Planungssystem für virtuelle Kraftwerke</h1>
+                        <h1 className={'white'}>虚拟电厂规划系统</h1>
                     </Header>
                     <Content style={{margin: '48px 48px'}}>
                         <Switch>

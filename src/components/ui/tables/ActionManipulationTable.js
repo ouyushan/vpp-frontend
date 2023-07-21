@@ -30,7 +30,7 @@ export const ActionManipulationTable = observer(() => {
                     startTimestamp: manipulation.startTimestamp,
                     endTimestamp: manipulation.endTimestamp,
                     type: manipulation.type,
-                    manipulation: manipulation.ratedPower + " kW für " + manipulation.hours
+                    manipulation: manipulation.ratedPower + " kW 对于 " + manipulation.hours
                 });
             });
             vppStore.dashboardState.selectedActionRequest.gridManipulations.forEach((manipulation) => {
@@ -57,13 +57,13 @@ export const ActionManipulationTable = observer(() => {
                        dataSource={combineManipulations()}
                        columns={[
                            {
-                               title: 'Name der Erzeugungs-/Speicheranlage',
+                               title: '发电/储能设备名称',
                                dataIndex: 'producerOrStorageId',
                                key: 'producerOrStorageId',
                                defaultSortOrder: 'descend'
                            },
                            {
-                               title: 'Start',
+                               title: '开始',
                                dataIndex: 'startTimestamp',
                                key: 'startTimestamp',
                                render: (record) => {
@@ -78,10 +78,10 @@ export const ActionManipulationTable = observer(() => {
                                    bDate.setSeconds(b.startTimestamp, 0);
                                    return bDate - aDate;
                                },
-                               defaultSortOrder: 'descend'
+                               defaultSortOrder: '倒序'
                            },
                            {
-                               title: 'Ende',
+                               title: '结束',
                                dataIndex: 'endTimestamp',
                                key: 'endTimestamp',
                                render: (record) => {
@@ -91,29 +91,29 @@ export const ActionManipulationTable = observer(() => {
                                }
                            },
                            {
-                               title: 'Manipulationstyp',
+                               title: '操作类型',
                                dataIndex: 'type',
                                key: 'type',
                                render: (property) => {
                                    if (property === "PRODUCER_UP") {
-                                       return "Hochgefahren";
+                                       return "Hochgefahren[生产加速]";
                                    } else if (property === "PRODUCER_DOWN") {
-                                       return "Runtergefahren";
+                                       return "Runtergefahren[生产减速]";
                                    } else if (property === "STORAGE_LOAD") {
-                                       return "Aufgeladen";
+                                       return "Aufgeladen[已充电]";
                                    } else if (property === "STORAGE_UNLOAD") {
-                                       return "Entladen";
+                                       return "Entladen[已放电]";
                                    } else if (property === "GRID_LOAD") {
-                                       return "Eingespeist";
+                                       return "Eingespeist[已插入]";
                                    } else if (property === "GRID_UNLOAD") {
-                                       return "Ausgespeist";
+                                       return "Ausgespeist[已送达]";
                                    } else {
                                        return <div>-</div>
                                    }
                                }
                            },
                            {
-                               title: 'Manipulation',
+                               title: '操作',
                                dataIndex: 'manipulation',
                                key: 'manipulation',
                                render: (property, record) => {
@@ -141,7 +141,7 @@ export const ActionManipulationTable = observer(() => {
             <Col>
                 <h3>Manipulationsübersicht</h3>
                 <Alert
-                    description="Für diese Maßnahmenabfrage existieren keine Manipulationen."
+                    description="此测量调查没有任何操作."
                     type="info"
                 />
             </Col>

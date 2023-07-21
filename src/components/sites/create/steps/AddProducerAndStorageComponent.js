@@ -38,36 +38,35 @@ const AddProducerAndStorageComponent = observer((props) => {
 
     const onEnd = () => {
         store.vppStore.resetCreatingState();
-        enqueueSnackbar("Der Prozess wurde erfolgreich beendet.", {variant: "success"});
+        enqueueSnackbar("流程已成功完成.", {variant: "success"});
         history.push('/bearbeiten');
     };
 
     return (
         <div className={'create-vpp'}>
             <CreateStepComponent currentStep={3}/>
-            <h2 style={{marginTop: 32}}>Schritt 3: Hinzufügen der Erzeugungs- und Speicheranlagen</h2>
-            <p>In diesem Schritt werden den zuvor angelegten Haushalten und Dez. Kraftwerke die Erzeugungs- und
-                Speicheranlagen hinzugefügt</p>
+            <h2 style={{marginTop: 32}}>第3步：新建发电和储能设备</h2>
+            <p>在这一步中，在已创建好的分布式电厂和住户中创建发电和储能设备</p>
 
             <EditVppForm state={store.vppStore.creatingState}/>
 
             <Row style={{marginTop: 16}} justify="end">
                 <Col>
                     <Button style={{marginRight: 8}} onClick={onBack} type="primary">
-                        Zurück zu Schritt 3
+                        返回步骤3
                     </Button>
                 </Col>
                 <Col>
                     <Popconfirm
-                        title="Möchten Sie diesen Prozess wirklich beenden?"
+                        title="你真的想结束这个过程吗？?"
                         onConfirm={onEnd}
                         onCancel={() => {
                         }}
-                        okText="Ja"
-                        cancelText="Nein"
+                        okText="是"
+                        cancelText="否"
                     >
                         <Button type="primary">
-                            Prozess abschließen
+                            完整流程
                         </Button>
                     </Popconfirm>
                 </Col>

@@ -33,15 +33,15 @@ export const ActionRequestComponent = observer(() => {
         } else if (vppStore.dashboardState.selectedActionRequest.status === "FAILED") {
             return <Row>
                 <Alert style={{marginTop: 16}}
-                       description="Während der Maßnahmenabfrage ist ein Fehler aufgetreten. Bitte überprüfen Sie die Logs der einzelnen Services."
+                       description="操作查询过程中出错。请检查每个服务的日志."
                        type="error"/>
             </Row>
         } else if (vppStore.dashboardState.selectedActionRequest.status === "STARTED") {
-            return <DataLoading message={"Die Maßnahmenabfrage wird momentan bearbeitet. Bitte warten Sie..."}/>
+            return <DataLoading message={"行动查询目前正在处理中。请稍候..."}/>
         } else {
-            return <p style={{marginTop: 16}}>Bitte führen Sie eine Aktion aus, indem Sie ein VK auswählen.</p>;
+            return <p style={{marginTop: 16}}>请通过选择虚拟电厂执行操作.</p>;
         }
     } else {
-        return <p style={{marginTop: 16}}>Bitte führen Sie eine Aktion aus, indem Sie ein VK auswählen.</p>;
+        return <p style={{marginTop: 16}}>请通过选择虚拟电厂执行操作.</p>;
     }
 });

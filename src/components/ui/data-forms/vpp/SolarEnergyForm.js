@@ -16,13 +16,13 @@ export const SolarEnergyForm = observer((props) => {
         destroyOnClose={true}
         footer={[
             <Button key="back" onClick={onCancel}>
-                Abbrechen
+                取消
             </Button>,
         ]}
-        title={"Solaranlage " + (editing ? "aktualisieren" : "hinzufügen")}
+        title={"光伏 " + (editing ? "更新" : "添加")}
         visible={visible}
     >
-        <p>Bitte pflegen Sie die Daten für die Solaranlage ein</p>
+        <p>请输入光伏数据</p>
         <Form
             name="createSolarEnergy"
             initialValues={(editing ? solarEnergy : {remember: false})}
@@ -30,20 +30,20 @@ export const SolarEnergyForm = observer((props) => {
             layout="vertical"
         >
             <Form.Item
-                label="Name der Erzeugungsanlage"
+                label="设备名称"
                 name="solarEnergyId"
-                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                rules={[{required: true, message: '此字段必须填写。'}]}
             >
                 <Input style={{width: 250}}/>
             </Form.Item>
             <Row>
                 <Col>
-                    <Tooltip placement={"left"} title={"Gibt die Neigung des Daches in Grad an."}>
+                    <Tooltip placement={"left"} title={"表示屋顶的坡度（以度为单位）."}>
                         <Form.Item
                             style={{marginRight: 16}}
-                            label="Neigung (Grad)"
+                            label="倾斜（度）"
                             name="slope"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <Input style={{width: 250}}/>
                         </Form.Item>
@@ -51,11 +51,11 @@ export const SolarEnergyForm = observer((props) => {
                 </Col>
                 <Col>
                     <Tooltip placement={"right"}
-                             title={"Gibt die getestete Nennleistung unter Standardbedingungen an."}>
+                             title={"指定在标准条件下测试的额定功率."}>
                         <Form.Item
-                            label="Nennleistung (kWp)"
+                            label="额定功率 (kWp)"
                             name="ratedCapacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
@@ -64,23 +64,23 @@ export const SolarEnergyForm = observer((props) => {
             </Row>
             <Row>
                 <Col>
-                    <Tooltip placement={"left"} title={"Gibt den Breitengrad des Standorts an."}>
+                    <Tooltip placement={"left"} title={"指定场地的纬度."}>
                         <Form.Item
                             style={{marginRight: 16}}
                             label="Latitude"
                             name="latitude"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
                     </Tooltip>
                 </Col>
                 <Col>
-                    <Tooltip placement={"right"} title={"Gibt den Längengrad des Standorts an."}>
+                    <Tooltip placement={"right"} title={"指定站点的经度."}>
                         <Form.Item
                             label="Longitude"
                             name="longitude"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
@@ -90,24 +90,24 @@ export const SolarEnergyForm = observer((props) => {
             <Row>
                 <Col>
                     <Tooltip placement={"left"}
-                             title={"Gibt die Ausrichtung der Anlage zur Himmelsrichtung in Grad an."}>
+                             title={"指示系统相对于基本方向的方向（以度为单位）."}>
                         <Form.Item
                             style={{marginRight: 16}}
-                            label="Ausrichtung (Grad)"
+                            label="方向（度）"
                             name="alignment"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
                     </Tooltip>
                 </Col>
                 <Col>
-                    <Tooltip placement={"right"} title={"Gibt die aktuelle prozentuale Leistung der Anlage an."}>
+                    <Tooltip placement={"right"} title={"指定设备的当前功率百分比."}>
                         <Form.Item
                             style={{marginRight: 16}}
-                            label="Kapazität (%)"
+                            label="容量 (%)"
                             name="capacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <Slider style={{width: 250}}/>
                         </Form.Item>
@@ -116,7 +116,7 @@ export const SolarEnergyForm = observer((props) => {
             </Row>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    {editing ? "Aktualisieren" : "Hinzufügen"}
+                    {editing ? "更新" : "添加"}
                 </Button>
             </Form.Item>
         </Form>

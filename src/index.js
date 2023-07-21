@@ -12,7 +12,7 @@ import {SnackbarProvider} from 'notistack';
 
 
 ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <RootStore>
             <Router history={history}>
                 <SnackbarProvider maxSnack={3} anchorOrigin={{
@@ -24,7 +24,8 @@ ReactDOM.render(
             </Router>
         </RootStore>
 
-    </React.StrictMode>,
+    // </React.StrictMode>
+,
     document.getElementById('root')
 );
 

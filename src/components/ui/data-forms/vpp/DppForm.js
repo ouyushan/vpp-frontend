@@ -14,16 +14,15 @@ export const DppForm = observer((props) => {
         <Modal
             closable={false}
             destroyOnClose={true}
-            title={"Dezentrales Kraftwerk " + (editing ? "aktualisieren" : "hinzufügen")}
+            title={"分布式电厂 " + (editing ? "更新" : "新增")}
             visible={visible}
             footer={[
                 <Button key="back" onClick={onCancel}>
-                    Abbrechen
+                    取消
                 </Button>
             ]}
         >
-            <p>Ein dezentrales Kraftwerk besteht zunächst nur aus einem Namen. Diesem Kraftwerk werden in den nächsten
-                Schritten Erzeugungs- und Speicheranlagen hinzugefügt.</p>
+            <p>分布式电厂名称是唯一的。该电厂将添加发电和储能设备.</p>
             <Form
                 name="createHousehold"
                 initialValues={(editing ? dpp : {remember: false})}
@@ -31,15 +30,15 @@ export const DppForm = observer((props) => {
                 layout="vertical"
             >
                 <Form.Item
-                    label="Name des dez. Kraftwerks"
+                    label="分布式电厂"
                     name="decentralizedPowerPlantId"
-                    rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                    rules={[{required: true, message: '此字段必须填写。'}]}
                 >
                     <Input style={{width: 250}}/>
                 </Form.Item>
                 <Form.Item style={{marginTop: 32}}>
                     <Button type="primary" htmlType="submit">
-                        {editing ? "Aktualisieren" : "Hinzufügen"}
+                        {editing ? "更新" : "新增"}
                     </Button>
                 </Form.Item>
             </Form>

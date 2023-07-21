@@ -14,14 +14,14 @@ export const WaterEnergyForm = observer((props) => {
         width={600}
         closable={false}
         destroyOnClose={true}
-        title={"Wasserkraftwerk " + (editing ? "aktualisieren" : "hinzufügen")}
+        title={"水电设备 " + (editing ? "更新" : "添加")}
         visible={visible}
         footer={[
             <Button key="back" onClick={onCancel}>
-                Abbrechen
+                取消
             </Button>,
         ]}>
-        <p>Bitte pflegen Sie die Daten des Wasserkraftwerks ein</p>
+        <p>请输入水力设备的数据</p>
         <Form
             name="createWaterEnergy"
             initialValues={(editing ? waterEnergy : {remember: false})}
@@ -29,9 +29,9 @@ export const WaterEnergyForm = observer((props) => {
             layout="vertical"
         >
             <Form.Item
-                label="Name der Erzeugungsanlage"
+                label="设备名称"
                 name="waterEnergyId"
-                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                rules={[{required: true, message: '此字段必须填写。'}]}
             >
                 <Input style={{width: 250}}/>
             </Form.Item>
@@ -39,18 +39,18 @@ export const WaterEnergyForm = observer((props) => {
                 <Col>
                     <Form.Item
                         style={{marginRight: 16}}
-                        label="Wirkungsgrad (%)"
+                        label="效率（%）"
                         name="efficiency"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Wasserdichte (kg/m^3)"
+                        label="密度 (kg/m^3)"
                         name="density"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
@@ -59,16 +59,16 @@ export const WaterEnergyForm = observer((props) => {
             <Row>
                 <Col><Form.Item
                     style={{marginRight: 16}}
-                    label="Fallgeschwindigkeit (m/s)"
+                    label="下降速度 (m/s)"
                     name="gravity"
-                    rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                    rules={[{required: true, message: '此字段必须填写。'}]}
                 >
                     <InputNumber style={{width: 250}}/>
                 </Form.Item></Col>
                 <Col><Form.Item
-                    label="effektive Fallhöhe (m)"
+                    label="有效降落高度 (m)"
                     name="height"
-                    rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                    rules={[{required: true, message: '此字段必须填写。'}]}
                 >
                     <InputNumber style={{width: 250}}/>
                 </Form.Item></Col>
@@ -76,18 +76,18 @@ export const WaterEnergyForm = observer((props) => {
             <Row>
                 <Col><Form.Item
                     style={{marginRight: 16}}
-                    label="Volumenstrom (m^3/s)"
+                    label="体积流量 (m^3/s)"
                     name="volumeFlow"
-                    rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                    rules={[{required: true, message: '此字段必须填写。'}]}
                 >
                     <InputNumber style={{width: 250}}/>
                 </Form.Item></Col>
                 <Col>
-                    <Tooltip placement={"right"} title={"Gibt die derzeitige prozentuale Leistung der Anlage an."}>
+                    <Tooltip placement={"right"} title={"表示电厂的当前功率百分比."}>
                         <Form.Item
-                            label="aktuelle Kapazität (%)"
+                            label="电流容量 (%)"
                             name="capacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <Slider style={{width: 250}}/>
                         </Form.Item>
@@ -97,7 +97,7 @@ export const WaterEnergyForm = observer((props) => {
 
             <Form.Item style={{marginTop: 32}}>
                 <Button type="primary" htmlType="submit">
-                    {editing ? "Aktualisieren" : "Hinzufügen"}
+                    {editing ? "更新" : "添加"}
                 </Button>
             </Form.Item>
         </Form>

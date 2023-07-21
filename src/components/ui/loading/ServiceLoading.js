@@ -34,7 +34,7 @@ export const ServiceLoading = (props) => {
                 justifyContent: "center", flexDirection: "column"
             }}>
                 <Spin style={{display: "block", height: 50, width: 50}} size={"large"} indicator={antIcon}/>
-                <h3>Derzeit sind nicht alle Dienste des PuK erreichbar. Bitte überprüfen Sie die einzelnen Dienste.</h3>
+                <h3>目前并非所有服务都可用。请检查个人服务.</h3>
             </div>
 
         </div>;

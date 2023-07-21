@@ -19,7 +19,7 @@ const AddDppsComponent = observer((props) => {
 
     const columns = [
         {
-            title: 'Dezentrale Kraftwerke',
+            title: '分布式电厂',
             dataIndex: 'decentralizedPowerPlantId',
             key: 'decentralizedPowerPlantId',
         },
@@ -70,7 +70,7 @@ const AddDppsComponent = observer((props) => {
 
     const onEnd = () => {
         store.vppStore.resetCreatingState();
-        enqueueSnackbar("Der Prozess wurde erfolgreich beendet.", {variant: "success"});
+        enqueueSnackbar("流程已成功完成.", {variant: "success"});
         history.push('/bearbeiten');
     };
 
@@ -87,16 +87,14 @@ const AddDppsComponent = observer((props) => {
     return (
         <div className={'create-vpp'}>
             <CreateStepComponent currentStep={1}/>
-            <h2 style={{marginTop: 32}}>Schritt 1: Hinzufügen dezentraler Kraftwerke</h2>
-            <p>Ein virtuelles Kraftwerk beinhaltet beliebig viele dezentrale Kraftwerke. In diesem Schritt werden diese
-                dem
-                virtuellen Kraftwerk hinzugefügt.</p>
+            <h2 style={{marginTop: 32}}>步骤1：创建分布式电厂</h2>
+            <p>虚拟电厂包含任意数量的分布式电厂。在该步骤中创建分布式电厂.</p>
             <Table dataSource={store.vppStore.dpps} columns={columns}/>
 
             <Row style={{marginTop: 16}}>
                 <Col>
                     <Button onClick={onOpenAddDppModal} type="primary" icon={<PlusOutlined/>}>
-                        Dezentrales Kraftwerk hinzufügen
+                        创建分布式电厂
                     </Button>
                 </Col>
             </Row>
@@ -104,21 +102,21 @@ const AddDppsComponent = observer((props) => {
             <Row style={{marginTop: 16}} justify="end">
                 <Col>
                     <Popconfirm
-                        title="Möchten Sie diesen Prozess wirklich beenden?"
+                        title="你真的想结束这个过程吗？?"
                         onConfirm={onEnd}
                         onCancel={() => {
                         }}
-                        okText="Ja"
-                        cancelText="Nein"
+                        okText="是"
+                        cancelText="否"
                     >
                         <Button style={{marginRight: 8}}>
-                            Prozess beenden
+                            结束进程
                         </Button>
                     </Popconfirm>
                 </Col>
                 <Col>
                     <Button onClick={onForward} type="primary">
-                        Weiter zu Schritt 2
+                        继续执行步骤2
                     </Button>
                 </Col>
             </Row>

@@ -79,19 +79,19 @@ const EditComponent = observer((props) => {
     } else {
         return (
             <div className={'edit-vpp'}>
-                <h2>Virtuelles Kraftwerk editieren</h2>
-                <p>In diesem Bereich können Sie bestehende virtuelle Kraftwerke editieren löschen und publizieren.</p>
+                <h2>编辑虚拟电厂</h2>
+                <p>在本节中，您可以删除和发布现有的虚拟电厂.</p>
                 {store.vppStore.vpps.length < 1
                     ? <Row>
                         <Col>
                             <Alert
-                                description={"Es existieren momentan keine virtuellen Kraftwerke, die bearbeitet werden können."}/>
+                                description={"目前没有可以处理的虚拟电厂."}/>
                         </Col>
                     </Row>
                     : store.vppStore.vpps.map((vpp) => {
                         return (
                             <Tooltip placement={"right"}
-                                     title={"Status: " + (vpp.published ? "veröffentlicht" : "nicht veröffentlicht")}>
+                                     title={"Status: " + (vpp.published ? "已发布" : "未发布")}>
                                 <Button style={{marginRight: 8}} onClick={e => onSelectVpp(vpp.virtualPowerPlantId)}
                                         type="primary"
                                         htmlType="submit">

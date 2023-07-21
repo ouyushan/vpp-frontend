@@ -55,12 +55,12 @@ export const StorageManipulationForm = observer(() => {
         let exists = false;
 
         if (record.startTimestamp > record.endTimestamp) {
-            enqueueSnackbar("Der Startzeitstempel kann nicht größer als der Endzeitstempel sein.", {variant: "error"});
+            enqueueSnackbar("开始时间戳不能大于结束时间戳.", {variant: "error"});
         } else {
             vppStore.dashboardState.addingActionRequest.storageManipulations.forEach((manipulation) => {
                 if (dateRangeOverlaps(manipulation.startTimestamp, manipulation.endTimestamp, record.startTimestamp, record.endTimestamp) &&
                     manipulation.storageId === record.storageId) {
-                    enqueueSnackbar("Die Zeitstempel dürfen sich bei existierenden Manipulationen nicht überschneiden.", {variant: "error"});
+                    enqueueSnackbar("时间戳不得与现有操作重叠.", {variant: "error"});
                     exists = true;
                 }
             });
@@ -69,7 +69,7 @@ export const StorageManipulationForm = observer(() => {
                 vppStore.dashboardState.addingActionRequest.storageManipulations.push(
                     record
                 );
-                enqueueSnackbar("Die Manipulation wurde erfolgreich eingefügt.", {variant: "success"});
+                enqueueSnackbar("操作已成功插入.", {variant: "success"});
                 onCancelStorageManipulation()
             }
         }
@@ -101,11 +101,11 @@ export const StorageManipulationForm = observer(() => {
                 vppStore.dashboardState.addingStorageManipulation.type = record.type;
                 checkAndRemoveDuplicateStorageManipulation(vppStore.dashboardState.addingActionRequest);
                 vppStore.dashboardState.addingActionRequest.storageManipulations.push(vppStore.dashboardState.addingStorageManipulation);
-                enqueueSnackbar("Die Manipulation wurde erfolgreich bearbeitet.", {variant: "success"});
+                enqueueSnackbar("操作已成功处理.", {variant: "success"});
                 onCancelStorageManipulation()
             }
         } else {
-            enqueueSnackbar("Bitte wählen Sie eine Anlage aus der Tabelle.", {variant: "error"})
+            enqueueSnackbar("请从表中选择一个附件.", {variant: "error"})
         }
     };
 
@@ -118,11 +118,11 @@ export const StorageManipulationForm = observer(() => {
     return (<Modal
         destroyOnClose={true}
         closable={false}
-        title="Speichermanipulation hinzufügen"
+        title="添加储能操作"
         visible={vppStore.dashboardState.isAddingStorageManipulation || vppStore.dashboardState.isEditingStorageManipulation}
         footer={[
             <Button key="back" onClick={onCancelStorageManipulation}>
-                Abbrechen
+                取消
             </Button>
         ]}
         width={1000}
@@ -155,7 +155,7 @@ export const StorageManipulationForm = observer(() => {
                     <Form.Item
                         label="Startzeitstempel"
                         name="startTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                         style={{marginRight: 16}}
                     >
                         <DatePicker
@@ -169,9 +169,9 @@ export const StorageManipulationForm = observer(() => {
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Endzeitstempel"
+                        label="结束时间"
                         name="endTimestamp"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <DatePicker
                             style={{width: 250}}
@@ -184,15 +184,15 @@ export const StorageManipulationForm = observer(() => {
                 </Col>
             </Row>
             <Form.Item
-                label="Art der Manipulation"
+                label="操作类型"
                 name="type"
-                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                rules={[{required: true, message: '此字段必须填写。'}]}
                 style={{marginRight: 16}}
             >
                 <Select
                     style={{width: 250}}
                     showSearch
-                    placeholder="Manipulationstyp"
+                    placeholder="操作类型"
                     optionFilterProp="children"
                 >
                     <Option value="STORAGE_LOAD">Laden</Option>
@@ -217,17 +217,17 @@ export const StorageManipulationForm = observer(() => {
                 }}
                 columns={
                     [{
-                        title: 'Speicheranlage',
+                        title: '储能设备',
                         dataIndex: 'storageId',
                         key: 'storageId',
                     },
                         {
-                            title: 'Nennleistung',
+                            title: '额定功率',
                             dataIndex: 'ratedPower',
                             key: 'ratedPower',
                         },
                         {
-                            title: 'Kapazität lt. Stammdatum',
+                            title: '容量',
                             dataIndex: 'capacity',
                             key: 'capacity',
                         },

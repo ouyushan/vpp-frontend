@@ -16,13 +16,13 @@ export const WindEnergyForm = observer((props) => {
         destroyOnClose={true}
         footer={[
             <Button key="back" onClick={onCancel}>
-                Abbrechen
+                取消
             </Button>,
         ]}
-        title={"Windkraftanlage " + (editing ? "aktualisieren" : "hinzufügen")}
+        title={"风力设备 " + (editing ? "更新" : "添加")}
         visible={visible}
     >
-        <p>Bitte pflegen Sie die Daten für die Windkraftanlage ein</p>
+        <p>请输入风力设备数据</p>
         <Form
             name="createWindEnergy"
             initialValues={(editing ? windEnergy : {remember: false})}
@@ -30,9 +30,9 @@ export const WindEnergyForm = observer((props) => {
             layout="vertical"
         >
             <Form.Item
-                label="Name der Erzeugungsanlage"
+                label="设备名称"
                 name="windEnergyId"
-                rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                rules={[{required: true, message: '此字段必须填写。'}]}
             >
                 <Input style={{width: 250}}/>
             </Form.Item>
@@ -40,18 +40,18 @@ export const WindEnergyForm = observer((props) => {
                 <Col>
                     <Form.Item
                         style={{marginRight: 16}}
-                        label="Wirkungsgrad (%)"
+                        label="效率 (%)"
                         name="efficiency"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <Input style={{width: 250}}/>
                     </Form.Item>
                 </Col>
                 <Col>
                     <Form.Item
-                        label="Höhe (m)"
+                        label="高度（m）"
                         name="height"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
@@ -59,23 +59,23 @@ export const WindEnergyForm = observer((props) => {
             </Row>
             <Row>
                 <Col>
-                    <Tooltip placement={"left"} title={"Gibt den Breitengrad des Standorts an."}>
+                    <Tooltip placement={"left"} title={"指定场地的纬度."}>
                         <Form.Item
                             style={{marginRight: 16}}
                             label="Latitude"
                             name="latitude"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
                     </Tooltip>
                 </Col>
                 <Col>
-                    <Tooltip placement={"right"} title={"Gibt den Längengrad des Standorts an."}>
+                    <Tooltip placement={"right"} title={"指定站点的经度."}>
                         <Form.Item
                             label="Longitude"
                             name="longitude"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <InputNumber style={{width: 250}}/>
                         </Form.Item>
@@ -86,20 +86,20 @@ export const WindEnergyForm = observer((props) => {
                 <Col>
                     <Form.Item
                         style={{marginRight: 16}}
-                        label="Radius des Windrads (m)"
+                        label="风机半径（m）"
                         name="radius"
-                        rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                        rules={[{required: true, message: '此字段必须填写。'}]}
                     >
                         <InputNumber style={{width: 250}}/>
                     </Form.Item>
                 </Col>
                 <Col>
                     <Tooltip placement={"right"}
-                             title={"Gibt die aktuelle prozentuale Leistung der Windkraftanlage an."}>
+                             title={"指定风力涡轮机的当前功率百分比."}>
                         <Form.Item
-                            label="aktuelle Kapazität (%)"
+                            label="电流容量（%）"
                             name="capacity"
-                            rules={[{required: true, message: 'Dieses Feld muss ausgefüllt sein.'}]}
+                            rules={[{required: true, message: '此字段必须填写。'}]}
                         >
                             <Slider style={{width: 250}}/>
                         </Form.Item>
@@ -108,7 +108,7 @@ export const WindEnergyForm = observer((props) => {
             </Row>
             <Form.Item style={{marginTop: 32}}>
                 <Button type="primary" htmlType="submit">
-                    {editing ? "Aktualisieren" : "Hinzufügen"}
+                    {editing ? "更新" : "添加"}
                 </Button>
             </Form.Item>
         </Form>
